@@ -1,94 +1,792 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muqriaz Azfar | Engineering Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muqriaz Azfar | Engineering Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --denim: #315B86;
+  --denim-dark: #203B5A;
+  --blue: #477EAE;
+  --light-blue: #DCECF8;
+  --pale-blue: #EEF6FC;
+  --white: #fff;
+  --text: #20324A;
+  --muted: #62758B;
+  --border: #D7E6F2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  background: var(--white);
+  border-bottom: 2px solid var(--light-blue);
+  padding: 16px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--denim);
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--blue);
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--denim-dark);
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+
+.menu-button {
+  display: none;
+  background: var(--light-blue);
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--denim);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.hero {
+  background: linear-gradient(135deg, #EEF6FC, #DCECF8);
+  padding: 100px 8%;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: .78rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  line-height: 1.15;
+  letter-spacing: -2px;
+  color: var(--denim-dark);
+  margin-bottom: 22px;
+}
+
+.hero h1 span {
+  color: var(--blue);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 620px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 2px solid var(--denim);
+}
+
+.button-primary {
+  background: var(--denim);
+  color: white;
+}
+
+.button-secondary {
+  color: var(--denim);
+  background: white;
+}
+
+.button:hover {
+  opacity: .85;
+}
+
+.hero-note {
+  margin-top: 25px;
+  font-size: .9rem !important;
+}
+
+.hero-card {
+  background: var(--denim);
+  color: white;
+  padding: 38px;
+  border-radius: 22px;
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 18px 45px #315B8620;
+}
+
+.gear {
+  font-size: 4.5rem;
+  color: var(--light-blue);
+  margin-bottom: 25px;
+}
+
+.hero-card .eyebrow {
+  color: var(--light-blue);
+}
+
+.hero-card h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+}
+
+.hero-card p {
+  color: #E4F1FA;
+  font-size: .95rem;
+}
+
+section.content-section {
+  padding: 85px 8%;
+  scroll-margin-top: 85px;
+}
+
+.section-heading {
+  max-width: 750px;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--denim-dark);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.section-heading > p:last-child {
+  color: var(--muted);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.initials {
+  height: 200px;
+  background: linear-gradient(135deg, var(--light-blue), #C4DEF1);
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--denim);
+}
+
+.about-text h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tags span {
+  background: var(--light-blue);
+  color: var(--denim-dark);
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.projects-section,
+.achievements-section {
+  background: var(--pale-blue);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px #315B8618;
+}
+
+.project-banner {
+  background: linear-gradient(135deg, var(--denim-dark), var(--blue));
+  color: white;
+  min-height: 150px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.project-banner h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.25rem;
+}
+
+.project-body {
+  padding: 23px;
+}
+
+.project-type {
+  color: var(--blue);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  margin-bottom: 8px;
+}
+
+.project-body h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.project-body p {
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.experience-list {
+  max-width: 950px;
+  border-left: 3px solid var(--light-blue);
+  margin-left: 10px;
+  padding-left: 28px;
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: white;
+}
+
+.experience-item::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--blue);
+  left: -36px;
+  top: 31px;
+}
+
+.experience-item h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.experience-item p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.achievement-grid,
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.achievement-card,
+.certificate-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 25px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.card-icon {
+  flex-shrink: 0;
+  background: var(--light-blue);
+  color: var(--denim);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.achievement-card h3,
+.certificate-card h3 {
+  font-family: 'Manrope', sans-serif;
+  margin-bottom: 8px;
+}
+
+.achievement-card p,
+.certificate-card p {
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+.contact-section {
+  background: var(--denim-dark);
+  color: white;
+  text-align: center;
+  padding: 75px 7%;
+  scroll-margin-top: 85px;
+}
+
+.contact-section .eyebrow {
+  color: var(--light-blue);
+}
+
+.contact-section h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.contact-section > p {
+  color: #E0ECF6;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.contact-links a {
+  background: white;
+  color: var(--denim-dark);
+  padding: 14px 20px;
+  border-radius: 9px;
+  font-weight: 700;
+}
+
+.contact-links a:hover {
+  background: var(--light-blue);
+}
+
+.contact-note {
+  font-size: .8rem;
+  margin-top: 22px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 22px 7%;
+  background: #F8FBFE;
+  color: var(--muted);
+  font-size: .85rem;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: var(--denim);
+  font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+  header {
+    flex-wrap: wrap;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 70px 7%;
+  }
+
+  .hero-card {
+    min-height: 240px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  section.content-section {
+    padding: 60px 6%;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .initials {
+    height: 130px;
+  }
+
+  .project-grid,
+  .achievement-grid,
+  .certificate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-links {
+    flex-direction: column;
+  }
+
+  .contact-links a {
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
 </head>
+
 <body>
-Muqri Azfar. ☰
-Home About Me Projects Experience Achievements Certificates
-MECHANICAL ENGINEERING PORTFOLIO
-Engineering ideas into practical solutions.
-A portfolio of my engineering projects, laboratory experience, technical skills and achievements.
-Explore Projects Contact Me
-UiTM Shah Alam · Mechanical Engineering
+<header>
+  <a class="logo" href="#home">Muqriaz<span>.</span></a>
 
+  <button class="menu-button" id="menuButton"
+    aria-label="Toggle navigation" aria-expanded="false">☰</button>
 
-⚙
-CORE INTEREST
-Materials & Testing
-Materials characterization · Laboratory analysis · Quality improvement
-01 / PROFILE
-About Me
-MA.
-Mechanical Engineering graduate
-I am a Mechanical Engineering graduate from Universiti Teknologi MARA (UiTM) Shah Alam with practical exposure to materials analysis and laboratory work through my internship at SIRIM QAS.
-My academic and project experience has developed my interest in materials characterization, engineering testing, data interpretation and quality improvement. I enjoy using experimental evidence to understand material behaviour and support engineering decisions.
-Materials CharacterizationLaboratory TestingData AnalysisQuality ToolsTechnical Reporting
-02 / SELECTED WORK
-Projects
-Open a project to see its objective, methods, findings and supporting files.
-XRDSEMFTIR
-FINAL-YEAR PROJECT
-Eggshell-Derived Calcium Phosphate Powder
-Investigation of calcination dwell time on synthesized eggshell-derived calcium phosphate powder.
-MaterialsXRDSEM-EDX
-View project details →
-DEFINEANALYSEIMPROVE
-QUALITY MANAGEMENT
-Wi-Fi Performance Analysis
-Application of quality management tools to investigate causes and prioritize improvement opportunities.
-5-WhyFishboneFMEA
-View project details →
-SAFETYCOMMUNITY
-COMMUNITY PROGRAMME
-Road Safety & Motorcycle Maintenance Workshop
-Programme coordination involving road safety awareness and basic motorcycle maintenance.
-CoordinationTeamwork
-View project details →
-Replace the sample descriptions and add your own photos, graphs and report files before publishing.
-03 / PROFESSIONAL BACKGROUND
-Working Experience
+  <nav id="navigation">
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-INTERNSHIP
-SIRIM QAS International
-MIST · Material Analysis Laboratory
-Gained exposure to laboratory workflows, material analysis, technical documentation and supporting testing activities. Add your exact internship dates, instruments operated and verified responsibilities here.
-Material AnalysisLab ProceduresDocumentation
+<main>
+<section class="hero" id="home">
+  <div>
+    <p class="eyebrow">MECHANICAL ENGINEERING PORTFOLIO</p>
+    <h1>Engineering ideas into <span>practical solutions.</span></h1>
+    <p>A portfolio of my engineering projects, laboratory experience, technical skills and achievements.</p>
 
-LEADERSHIP & ACTIVITIES
-Technical Manager / Programme Coordination
-Supported technical and logistical planning for collaborative workshops and student/community activities. Add specific dates and measurable outcomes where available.
-04 / RECOGNITION
-Achievements
-Highlight academic recognition and accomplishments that support your engineering profile.
-✦
-Dean's Award
-Academic recognition at UiTM. Add the exact semester and award details for each award you want to feature.
-↗
-Technical Programme Coordination
-Contributed to organizing technical and community collaboration activities.
-05 / CREDENTIALS
-Certificates
-Upload certificate PDFs or images to the assets/certificates folder, then link them here.
-PDF
-CIDB Certificate
-Add certificate title, issuing body and date.
-View certificate →
-Replace the sample PDF with your own file using the same filename, or update this link.
-PDF
-Additional Certificate
-Add relevant training, safety, software or technical certificates.
-View certificate →
-Update this filename to match your uploaded file.
-Privacy reminder: only publish certificates you are comfortable making public. Hide personal ID numbers, QR codes or other sensitive details when appropriate.
-LET'S CONNECT
-Contact
-Open to opportunities in mechanical engineering, materials testing and laboratory analysis.
-✉ YOUR.EMAIL@example.com in LinkedIn Profile ↗ View Resume (PDF)
-Remember to replace the email placeholder and add your resume PDF.
-Muqriaz.
-© Muqriaz Azfar · Engineering Portfolio
-Back to top ↑
+    <div class="hero-buttons">
+      <a class="button button-primary" href="#projects">Explore Projects</a>
+      <a class="button button-secondary" href="#contact">Contact Me</a>
+    </div>
+
+    <p class="hero-note">UiTM Shah Alam · Mechanical Engineering</p>
+  </div>
+
+  <div class="hero-card">
+    <div class="gear">⚙</div>
+    <p class="eyebrow">CORE INTEREST</p>
+    <h2>Materials &amp; Testing</h2>
+    <p>Materials characterization · Laboratory analysis · Quality improvement</p>
+  </div>
+</section>
+
+<section class="content-section" id="about">
+  <div class="section-heading">
+    <p class="eyebrow">01 / PROFILE</p>
+    <h2>About Me</h2>
+    <p>My background, interests and engineering skills.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="initials">MA.</div>
+    <div class="about-text">
+      <h3>Mechanical Engineering Graduate</h3>
+      <p>I am a Mechanical Engineering graduate from Universiti Teknologi MARA (UiTM) Shah Alam with practical exposure to materials analysis and laboratory work through my internship at SIRIM QAS.</p>
+      <p>My academic and project experience has developed my interest in materials characterization, engineering testing, data interpretation and quality improvement. I enjoy using experimental evidence to understand material behaviour and support engineering decisions.</p>
+
+      <div class="tags">
+        <span>Materials Characterization</span>
+        <span>Laboratory Testing</span>
+        <span>Data Analysis</span>
+        <span>Quality Tools</span>
+        <span>Technical Reporting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section projects-section" id="projects">
+  <div class="section-heading">
+    <p class="eyebrow">02 / SELECTED WORK</p>
+    <h2>Engineering Projects</h2>
+    <p>Explore individual projects, methods, findings and supporting documents.</p>
+  </div>
+
+  <div class="project-grid">
+    <article class="project-card">
+      <div class="project-banner"><h3>Materials Characterization</h3></div>
+      <div class="project-body">
+        <p class="project-type">FINAL-YEAR PROJECT</p>
+        <h3>Eggshell-Derived Calcium Phosphate Powder</h3>
+        <p>Investigation of the effect of calcination dwell time on synthesized eggshell-derived calcium phosphate powder.</p>
+        <div class="tags">
+          <span>XRD</span><span>FTIR</span><span>SEM-EDX</span><span>BET</span>
+        </div>
+        <a class="text-link" href="eggshell-calcium-phosphate.html">View project details →</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-banner"><h3>Quality Improvement</h3></div>
+      <div class="project-body">
+        <p class="project-type">QUALITY MANAGEMENT</p>
+        <h3>Wi-Fi Performance Analysis</h3>
+        <p>Application of quality management tools to investigate potential root causes and prioritize improvement opportunities.</p>
+        <div class="tags">
+          <span>5-Why</span><span>Fishbone</span><span>FMEA</span>
+        </div>
+        <a class="text-link" href="wifi-performance-analysis.html">View project details →</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-banner"><h3>Community Engagement</h3></div>
+      <div class="project-body">
+        <p class="project-type">COMMUNITY PROGRAMME</p>
+        <h3>Road Safety &amp; Motorcycle Maintenance Workshop</h3>
+        <p>Programme coordination involving road safety awareness and basic motorcycle maintenance.</p>
+        <div class="tags">
+          <span>Coordination</span><span>Teamwork</span>
+        </div>
+        <a class="text-link" href="community-workshop.html">View project details →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="content-section" id="experience">
+  <div class="section-heading">
+    <p class="eyebrow">03 / PROFESSIONAL BACKGROUND</p>
+    <h2>Working Experience</h2>
+    <p>My practical exposure and experience.</p>
+  </div>
+
+  <div class="experience-list">
+    <article class="experience-item">
+      <p class="project-type">INTERNSHIP</p>
+      <h3>SIRIM QAS International</h3>
+      <p><strong>MIST · Material Analysis Laboratory</strong></p>
+      <p>Gained exposure to laboratory workflows, material analysis, technical documentation and supporting testing activities.</p>
+      <p><em>Add your internship dates and specific duties here.</em></p>
+      <div class="tags">
+        <span>Material Analysis</span>
+        <span>Laboratory Procedures</span>
+        <span>Documentation</span>
+      </div>
+    </article>
+
+    <article class="experience-item">
+      <p class="project-type">LEADERSHIP &amp; ACTIVITIES</p>
+      <h3>Technical Manager / Programme Coordination</h3>
+      <p>Supported technical and logistical planning for collaborative workshops and student or community activities.</p>
+      <p><em>Add relevant dates and specific responsibilities here.</em></p>
+    </article>
+  </div>
+</section>
+
+<section class="content-section achievements-section" id="achievements">
+  <div class="section-heading">
+    <p class="eyebrow">04 / RECOGNITION</p>
+    <h2>Achievements</h2>
+    <p>Academic recognition and other accomplishments.</p>
+  </div>
+
+  <div class="achievement-grid">
+    <article class="achievement-card">
+      <div class="card-icon">★</div>
+      <div>
+        <h3>Dean's Award</h3>
+        <p>Academic recognition received during my studies at UiTM. Add the exact semester and award details.</p>
+      </div>
+    </article>
+
+    <article class="achievement-card">
+      <div class="card-icon">↗</div>
+      <div>
+        <h3>Technical Programme Coordination</h3>
+        <p>Contributed to organizing technical and community collaboration activities with external partners.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="content-section" id="certificates">
+  <div class="section-heading">
+    <p class="eyebrow">05 / CREDENTIALS</p>
+    <h2>Certificates</h2>
+    <p>Relevant training, technical credentials and certifications.</p>
+  </div>
+
+  <div class="certificate-grid">
+    <article class="certificate-card">
+      <div class="card-icon">PDF</div>
+      <div>
+        <h3>CIDB Certificate</h3>
+        <p>Add the certificate title, issuing body and date.</p>
+        <p><em>Certificate link to be added.</em></p>
+      </div>
+    </article>
+
+    <article class="certificate-card">
+      <div class="card-icon">PDF</div>
+      <div>
+        <h3>Additional Certificate</h3>
+        <p>Add other relevant engineering, safety or technical certificates.</p>
+        <p><em>Certificate link to be added.</em></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <p class="eyebrow">LET'S CONNECT</p>
+  <h2>Contact</h2>
+  <p>Open to opportunities in mechanical engineering, materials testing and laboratory analysis.</p>
+
+  <div class="contact-links">
+    <a href="mailto:YOUR.EMAIL@example.com">✉ Email Me</a>
+    <a href="https://www.linkedin.com/in/muqriazfar" target="_blank" rel="noopener noreferrer">in LinkedIn Profile</a>
+  </div>
+
+  <p class="contact-note">Replace the email placeholder with your professional email address.</p>
+</section>
+</main>
+
+<footer>
+  <a class="logo" href="#home">Muqriaz<span>.</span></a>
+  <p>© <span id="year"></span> Muqriaz Azfar · Engineering Portfolio</p>
+  <a href="#home">Back to top ↑</a>
+</footer>
+
+<script>
+const menuButton = document.getElementById('menuButton');
+const navigation = document.getElementById('navigation');
+
+menuButton.addEventListener('click', function () {
+  const isOpen = navigation.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', isOpen);
+});
+
+navigation.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    navigation.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
