@@ -440,3 +440,63 @@ footer a {
     align-items: flex-start;
   }
 }
+/* ABOUT ME - PROFILE PHOTO AND LAYOUT */
+
+#about .section-heading {
+  margin-bottom: 35px;
+}
+
+#about .about-grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 45px;
+  align-items: start;
+}
+
+#about .profile-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #DCECF8, #BFD9EE);
+  border: 1px solid #D7E6F2;
+}
+
+#about .profile-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#about .about-text h3 {
+  margin: 0 0 18px;
+  color: #20324A;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.4;
+}
+
+#about .about-text p {
+  margin: 0 0 22px;
+  color: #62758B;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+#about .about-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 750px) {
+  #about .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  #about .profile-photo {
+    max-width: 280px;
+    aspect-ratio: 4 / 5;
+  }
+}
